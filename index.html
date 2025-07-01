@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Buildah Image Builder</title></head>
+<body>
+  <h1>Buildah Image Builder Tool</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat,msg in messages %}
+      <p style="color: {{ 'green' if cat=='success' else 'red' }};">{{ msg }}</p>
+    {% endfor %}
+  {% endwith %}
+  <form method="POST" enctype="multipart/form-data">
+    Git Username: <input name="git_user" required><br>
+    Git Token: <input type="password" name="git_token" required><br>
+    Base Image: <input name="base_image" value="python:3.10"><br>
+    Config YAML: <input type="file" name="config_file" required><br><br>
+    <button type="submit">Build Image</button>
+  </form>
+</body>
+</html>
